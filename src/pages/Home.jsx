@@ -1,7 +1,7 @@
 export const Home = () => {
   return (
     <main>
-      <h1>Welcome</h1>
+      <h1>Hello World!</h1>
       <img src="https://via.placeholder.com/960x240" alt="" />
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto,

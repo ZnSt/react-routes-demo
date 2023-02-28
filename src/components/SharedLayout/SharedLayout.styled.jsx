@@ -35,3 +35,20 @@ export const StyeldLink = styled(NavLink)`
     border-bottom: 2px solid white;
   }
 `;
+
+export const Footer = styled.footer`
+  background-color: purple;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 30px;
+  width: 100%;
+
+  padding: 40px;
+`;
+
+export const FooterLogo = styled.footer`
+  font-weight: bold;
+  font-size: 30px;
+  color: red;
+`;
