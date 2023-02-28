@@ -1,9 +1,14 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getProductById } from 'fakeAPI';
+import { Btn } from './ProductDetails.styled';
 
 export const ProductDetails = () => {
   const { id } = useParams();
   const product = getProductById(id);
+
+  const navigate = useNavigate();
+  const goBack = () => navigate(-1);
+
   return (
     <main>
       <img src="https://via.placeholder.com/960x240" alt="" />
@@ -19,6 +24,7 @@ export const ProductDetails = () => {
           elit. Impedit suscipit quisquam incidunt commodi fugiat aliquam
           praesentium ipsum quos unde voluptatum?
         </p>
+        <Btn onClick={goBack}>Return</Btn>
       </div>
     </main>
   );
