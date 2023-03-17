@@ -1,20 +1,31 @@
-import { Routes, Route } from 'react-router';
-import { Layout } from './Layout';
-import { Sales } from '../pages/Sales';
-export const App = () => {
+import { Routes, Route } from 'react-router-dom';
+
+import Home from 'pages/Home';
+import Posts from 'pages/Posts';
+import Post from 'pages/Post';
+import About from 'pages/About';
+import NotFound from 'pages/NotFound';
+
+import SharedLayout from './SharedLayout';
+import CreatePost from 'pages/CreatePost';
+import EditPost from 'pages/EditPost';
+
+const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route path="dashboard" element={<div>Dashboard</div>} />
-        <Route path="sales" element={<Sales />}>
-          <Route path="analytics" element={<div>Analytics</div>} />
-          <Route path="invoices" element={<div>Invoices</div>} />
-          <Route path="deposits" element={<div>Deposits</div>} />
+    <div>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/posts" element={<Posts />} />
+          <Route path="/posts/:id" element={<Post />} />
+          <Route path="/posts/new" element={<CreatePost />} />
+          <Route path="/posts/:id/edit" element={<EditPost />} />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
-        <Route path="reports" element={<div>Reports</div>} />
-        <Route path="feedback" element={<div>Feedback</div>} />
-        <Route path="customers" element={<div>Customers</div>} />
-      </Route>
-    </Routes>
+      </Routes>
+    </div>
   );
 };
+
+export default App;
