@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 
@@ -12,12 +12,27 @@ const Posts = () => {
         setPosts(data);
       });
   }, []);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const value = searchParams.get('filter');
+  const filteredData = posts.filter(post =>
+    post.title.toLowerCase().includes(value || '')
+  );
+
   return (
     <div>
       <CreateBtn to={`/posts/new`}>Create Post</CreateBtn>
-
+      <input
+        type="text"
+        value={value}
+        placeholder="find..."
+        onChange={event =>
+          setSearchParams({ filter: event.currentTarget.value })
+        }
+        style={{ border: '2px solid black', marginTop: '40px' }}
+      />
       <ul>
-        {posts.map(post => (
+        {filteredData.map(post => (
           <li key={post.id}>
             <Link to={`/posts/${post.id}`}>{post.title}</Link>
           </li>
