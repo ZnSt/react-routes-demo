@@ -32,4 +32,5 @@ const EditBtn = styled(NavLink)`
   display: block;
   text-align: center;
 `;
+
 export default Post;

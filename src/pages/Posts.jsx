@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import styled from '@emotion/styled';
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -13,6 +14,8 @@ const Posts = () => {
   }, []);
   return (
     <div>
+      <CreateBtn to={`/posts/new`}>Create Post</CreateBtn>
+
       <ul>
         {posts.map(post => (
           <li key={post.id}>
@@ -23,5 +26,15 @@ const Posts = () => {
     </div>
   );
 };
+
+const CreateBtn = styled(NavLink)`
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100px;
+  display: block;
+  text-align: center;
+`;
 
 export default Posts;
